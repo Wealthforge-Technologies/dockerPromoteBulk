@@ -58,7 +58,7 @@ exec(total,function(err,stdout,stderr){
     exportObject.stderr = stderr;
     console.log(stdout)
 
-    fs.writeFile('exportObject.json', JSON.stringify(exportObject), function(err) {
+    fs.writeFile(sourceFolder+'/'+exportObject.environment+'.exportObject.json', JSON.stringify(exportObject), function(err) {
         if (err) throw err;
     });
 })
