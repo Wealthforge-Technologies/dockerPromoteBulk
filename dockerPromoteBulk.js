@@ -32,7 +32,7 @@ var exportObject={
 fs.readdirSync(sourceFolder).forEach(file => {
     if (!ignore.includes(file)) {
         let image = file;
-        let build = fs.readFileSync(file).toString().replace(/(\r\n|\n|\r)/gm,"");
+        let build = fs.readFileSync(sourceFolder+'/'+file).toString().replace(/(\r\n|\n|\r)/gm,"");
         exportObject.images.push({
             [file] : build
         });
