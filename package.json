@@ -1,6 +1,6 @@
 {
   "name": "dockerpromotebulk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tool for performing bulk actions of dockerPromote",
   "main": "dockerPromoteBulk.js",
   "scripts": {
@@ -21,5 +21,8 @@
     "bulk"
   ],
   "author": "Andrew Batz",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "argp": "^1.0.4"
+  }
 }
