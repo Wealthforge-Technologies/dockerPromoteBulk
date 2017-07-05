@@ -1,0 +1,25 @@
+{
+  "name": "dockerpromotebulk",
+  "version": "1.0.0",
+  "description": "A tool for performing bulk actions of dockerPromote",
+  "main": "dockerPromoteBulk.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "soon"
+  },
+  "bin": {
+    "dockerPromoteBulk": "./dockerPromoteBulk.js"
+  },
+  "keywords": [
+    "docker",
+    "promote",
+    "dockerpromote",
+    "devops",
+    "bulk"
+  ],
+  "author": "Andrew Batz",
+  "license": "MIT"
+}

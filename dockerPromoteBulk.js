@@ -15,14 +15,13 @@ if (!argv.user || !argv.environment) {
     console.log('--user (your docker hub user) & --environment (The destination of all these images) are required. \n--folder (the relative or absolute path from the run context to find the properly formatted files) is optional');
     return 1;
 }
-console.log('got past it');
 var sourceFolder = '.';
 if (argv.folder) {
     sourceFolder=argv.folder;
 }
 
 var total ='';
-const ignore = ['.git', 'index.js', 'README.md', 'package.json','exportObject.json'];
+const ignore = ['.git', 'dockerPromoteBulk.js', 'README.md', 'package.json','exportObject.json'];
 
 var exportObject={
     environment: argv.environment,
