@@ -21,7 +21,7 @@ if (argv.folder) {
 }
 
 var total ='';
-const ignore = ['.git', 'dockerPromoteBulk.js', 'README.md', 'package.json','exportObject.json'];
+const ignore = ['.git', 'dockerPromoteBulk.js', 'README.md', 'package.json','exportObject.json', 'node_modules', 'package-lock.json', 'ci.exportObject.json', '.gitignore'];
 
 var exportObject={
     environment: argv.environment,
@@ -34,7 +34,9 @@ fs.readdirSync(sourceFolder).forEach(file => {
         let image = file;
         let build = fs.readFileSync(sourceFolder+'/'+file).toString().replace(/(\r\n|\n|\r)/gm,"");
         exportObject.images.push({
-            [file] : build
+            build : build,
+            image : image,
+            fullImage : argv.user+'/'+file
         });
         // console.log(file);
         // console.log(fs.readFileSync(file).toString().replace(/(\r\n|\n|\r)/gm,""));

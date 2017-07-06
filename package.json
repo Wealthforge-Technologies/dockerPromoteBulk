@@ -1,6 +1,6 @@
 {
   "name": "dockerpromotebulk",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A tool for performing bulk actions of dockerPromote",
   "main": "dockerPromoteBulk.js",
   "scripts": {
