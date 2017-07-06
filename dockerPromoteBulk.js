@@ -11,8 +11,8 @@ var argv = require ("argp").createParser ({ once: true })
 
 // console.log(argv);
 
-if (!argv.user || !argv.environment) {
-    console.log('--user (your docker hub user) & --environment (The destination of all these images) are required. \n--folder (the relative or absolute path from the run context to find the properly formatted files) is optional');
+if (!argv.user ) {
+    console.log('--user (your docker hub user) is required \n--folder (the relative or absolute path from the run context to find the properly formatted files) is optional');
     return 1;
 }
 var sourceFolder = '.';
@@ -24,7 +24,6 @@ var total ='';
 const ignore = ['.git', 'dockerPromoteBulk.js', 'README.md', 'package.json','exportObject.json', 'node_modules', 'package-lock.json', 'ci.exportObject.json', '.gitignore'];
 
 var exportObject={
-    environment: argv.environment,
     user: argv.user,
     images:[]
 };
@@ -40,9 +39,6 @@ fs.readdirSync(sourceFolder).forEach(file => {
         });
         // console.log(file);
         // console.log(fs.readFileSync(file).toString().replace(/(\r\n|\n|\r)/gm,""));
-        var promoteStatement='dockerPromote '+argv.user+'/'+file+' '+ build +' '+argv.environment;
-        // console.log(promoteStatement);
-        total = total + '\n' + promoteStatement;
     }
     else{
         // console.log('ignoring '+file);
@@ -50,17 +46,6 @@ fs.readdirSync(sourceFolder).forEach(file => {
 })
 
 
-
-console.log('/////////////////////////////////// about to execute')
-console.log(total)
-exportObject.command = total;
-console.log('/////////////////////////////////// output of execution')
-exec(total,function(err,stdout,stderr){
-    exportObject.stdout = stdout;
-    exportObject.stderr = stderr;
-    console.log(stdout)
-
-    fs.writeFile(sourceFolder+'/'+exportObject.environment+'.exportObject.json', JSON.stringify(exportObject), function(err) {
-        if (err) throw err;
-    });
-})
+fs.writeFile(sourceFolder+'/'+'exportObject.json', JSON.stringify(exportObject), function(err) {
+    if (err) throw err;
+});
